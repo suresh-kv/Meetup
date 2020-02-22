@@ -1,0 +1,24 @@
+syntax = "proto3";
+package service_proto;
+
+service ServiceHistory {
+    rpc GetLatestServiceRecord(Request) returns (ServiceRecord) {}
+    rpc GetAllServiceRecords(Request) returns (stream ServiceRecord) {}
+    rpc AlwaysReturnError(Request) returns (ServiceRecord) {}
+}
+
+message Request {
+    string vin = 1;
+}
+
+message ServiceRecord {
+    string dealer_name = 1;
+    int64 timestamp = 2;
+    int64 odometer = 3;
+    string repair_no = 4;
+    string advisor_name = 5;
+}
+
+
+
+
